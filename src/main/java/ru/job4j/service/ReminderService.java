@@ -1,9 +1,18 @@
 package ru.job4j.service;
 
+import org.springframework.beans.factory.BeanNameAware;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.springframework.stereotype.Service;
 
-public class ReminderService {
+@Service
+public class ReminderService implements BeanNameAware {
+
+    @Override
+    public void setBeanName(String name) {
+        System.out.println("Bean name assigned by Spring context: " + name);
+    }
+
     @PostConstruct
     public void init() {
         System.out.println("Bean is going through init.");
